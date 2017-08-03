@@ -20,14 +20,18 @@ module.exports = function(grunt){
         }
     },
     "watch": {
-      css: {
-        files: [ 'scss/*.scss'],
-        tasks: ['sass']
-      },
-      js: {
-        files: [ 'js/*.js'],
-        tasks: ['babel']
-      }
+        options: { livereload: true },
+        css: {
+            files: [ 'scss/*.scss'],
+            tasks: ['sass']
+        },
+        js: {
+            files: [ 'js/*.js'],
+            tasks: ['babel']
+        },
+        html: {
+            files: ["index.html"]
+        }
     }
   });
 
