@@ -1,3 +1,48 @@
 body{
     width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    @media(min-width: 426px){
+        flex-direction: row;
+    }
+}
+
+.header{
+    background-color: green;
+    flex-grow: 2;
+}
+
+.sections{
+    flex-grow: 1;
+
+    @media(min-width: 426px){
+        flex-grow: 1;
+    }
+
+    display: flex;
+    flex-direction: column;
+
+    .section{
+        flex-grow: 1;
+    }
+
+    .section.cv{
+        background-color: red;
+    }
+
+    .section.projects{
+        background-color: blue;
+    }
+
+    .section.contact{
+        background-color: purple
+    }
 }
