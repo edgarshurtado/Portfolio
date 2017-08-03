@@ -21,17 +21,18 @@ module.exports = function(grunt){
     },
     "watch": {
       css: {
-        files: 'scss/*.scss',
+        files: [ 'scss/*.scss'],
         tasks: ['sass']
       },
       js: {
-        files: 'js/*.js',
+        files: [ 'js/*.js'],
         tasks: ['babel']
       }
     }
   });
 
-  grunt.registerTask("default", ["babel"]);
-  grunt.registerTask("watch", ["watch"]);
-}
+  grunt.registerTask("sass-task", ["sass"]);
+  grunt.registerTask("default", ["watch"]);
+  grunt.registerTask("babel-task", ["babel"]);
+};
 
