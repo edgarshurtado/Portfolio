@@ -1,2 +1,7 @@
-const me = "Edgar Sánchez";
-const hello = "world. It's me!";
+const sections = document.querySelectorAll('.section')
+
+sections.forEach((section) => {
+    section.addEventListener('click', function(){
+        this.classList.add('expanded')
+    });
+})
