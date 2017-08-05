@@ -38,6 +38,28 @@ body{
 
     .section{
         flex-grow: 1;
+
+        &.cv{
+            background-color: $color2;
+        }
+        &.projects{
+            background-color: $color3;
+        }
+        &.contact{
+            background-color: $color4;
+        }
+
+        &:not(.expanded){
+            .expanded-text, .collapse-btn{
+                display: none;
+            }
+        }
+
+        &.expanded{
+            .collapsed-text{
+                display:none;
+            }
+        }
     }
 
     .section.expanded{
@@ -49,15 +71,4 @@ body{
         z-index: 10;
     }
 
-    .section.cv{
-        background-color: $color2;
-    }
-
-    .section.projects{
-        background-color: $color3;
-    }
-
-    .section.contact{
-        background-color: $color4;
-    }
 }
