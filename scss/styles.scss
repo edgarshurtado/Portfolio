@@ -24,10 +24,23 @@ body{
 .header{
     background-color: $color1;
     flex-grow: 2;
+    transition: flex-grow 1s;
+
+	p { transition: font-size 1s; }
+
+    &.collapsed{
+		flex-grow: 0;
+
+		p { font-size: 0;}
+    }
 }
 
 .sections{
     flex-grow: 1;
+    transition: flex-grow 1s;
+    &.expanded {
+        flex-grow: 10;
+    }
 
     @media(min-width: 426px){
         flex-grow: 1;
@@ -38,6 +51,8 @@ body{
 
     .section{
         flex-grow: 1;
+        position: relative;
+        transition: flex-grow 1s;
 
         &.cv{
             background-color: $color2;
@@ -62,13 +77,9 @@ body{
         }
     }
 
+
     .section.expanded{
-        right: 0;
-        left: 0;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        z-index: 10;
+        flex-grow: 10;
     }
 
 }
