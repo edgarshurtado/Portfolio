@@ -4,7 +4,7 @@ const closeBtns = document.querySelectorAll('.collapse-btn')
 const headerSection = document.querySelector('.header')
 const sectionsDiv = document.querySelector('.sections')
 
-const getElementSiblings = function(element) {
+const getElementSiblings = function(element) { // solution inspired by https://stackoverflow.com/a/7354231
     let siblings = []
 
     for(const child of element.parentElement.children){
