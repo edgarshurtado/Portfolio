@@ -4,7 +4,17 @@ const closeBtns = document.querySelectorAll('.collapse-btn')
 const headerSection = document.querySelector('.header')
 const sectionsDiv = document.querySelector('.sections')
 
-sections.forEach((section) => {
+const getElementSiblings = function(element) {
+    let siblings = []
+
+    for(const child of element.parentElement.children){
+        if(child !== element) siblings.push(child)
+    }
+
+    return siblings
+}
+
+sections.forEach( section => {
     section.addEventListener('click', function(){
         this.classList.add('expanded')
         sectionsDiv.classList.add('expanded')
@@ -13,10 +23,16 @@ sections.forEach((section) => {
 })
 
 
-closeBtns.forEach(btn => {
+closeBtns.forEach( btn => {
     btn.addEventListener('click', function(e){
         e.stopPropagation()
-        this.parentElement.classList.remove('expanded')
+
+        console.log(getElementSiblings(this.parentElement))
+
+        for(const element of sectionsDiv.children){
+            element.classList.remove('expanded')
+        }
+
         headerSection.classList.remove('collapsed')
         sectionsDiv.classList.remove('expanded')
     })
