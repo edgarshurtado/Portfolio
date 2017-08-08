@@ -1,39 +1,45 @@
-
 const sections = document.querySelectorAll('.section')
 const closeBtns = document.querySelectorAll('.collapse-btn')
 const headerSection = document.querySelector('.header')
 const sectionsDiv = document.querySelector('.sections')
 
 const getElementSiblings = function(element) { // solution inspired by https://stackoverflow.com/a/7354231
-    let siblings = []
 
-    for(const child of element.parentElement.children){
-        if(child !== element) siblings.push(child)
+    const siblingsArray = [].slice.call(element.parentElement.children)
+
+    return siblingsArray.filter( child => {
+        return child !== element
+    })
+}
+
+const expandSection = function(section){
+    section.classList.add('expanded')
+    sectionsDiv.classList.add('expanded')
+    headerSection.classList.add('collapsed')
+
+}
+
+const collapseSections = function(sections){
+    for(const section of sections){
+        section.classList.remove('expanded')
     }
+}
 
-    return siblings
+const expandClickHandler = function(){
+    expandSection(this)
+    collapseSections(getElementSiblings(this))
 }
 
 sections.forEach( section => {
-    section.addEventListener('click', function(){
-        this.classList.add('expanded')
-        sectionsDiv.classList.add('expanded')
-        headerSection.classList.add('collapsed')
-    });
+    section.addEventListener('click', expandClickHandler);
 })
 
 
 closeBtns.forEach( btn => {
     btn.addEventListener('click', function(e){
-        e.stopPropagation()
+        e.stopPropagation() // Avoid bubbling to the section div
 
-        console.log(getElementSiblings(this.parentElement))
-
-        for(const element of sectionsDiv.children){
-            element.classList.remove('expanded')
-        }
-
+        collapseSections([sectionsDiv, ...sectionsDiv.children])
         headerSection.classList.remove('collapsed')
-        sectionsDiv.classList.remove('expanded')
     })
 })
