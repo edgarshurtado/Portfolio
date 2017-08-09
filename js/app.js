@@ -1,6 +1,6 @@
 const sections = document.querySelectorAll('.section')
 const closeBtns = document.querySelectorAll('.collapse-btn')
-const headerSection = document.querySelector('.header')
+const brandSection = document.querySelector('.brand')
 const sectionsDiv = document.querySelector('.sections')
 
 const getElementSiblings = function(element) { // solution inspired by https://stackoverflow.com/a/7354231
@@ -15,7 +15,7 @@ const getElementSiblings = function(element) { // solution inspired by https://s
 const expandSection = function(section){
     section.classList.add('expanded')
     sectionsDiv.classList.add('expanded')
-    headerSection.classList.add('collapsed')
+    brandSection.classList.add('collapsed')
 
 }
 
@@ -40,6 +40,6 @@ closeBtns.forEach( btn => {
         e.stopPropagation() // Avoid bubbling to the section div
 
         collapseSections([sectionsDiv, ...sectionsDiv.children])
-        headerSection.classList.remove('collapsed')
+        brandSection.classList.remove('collapsed')
     })
 })
