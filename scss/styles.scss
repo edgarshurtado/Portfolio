@@ -46,7 +46,7 @@ body{
     &.collapsed{
 		flex-grow: 0;
 
-		div {
+        .centered-content{
             display: none;
         }
     }
