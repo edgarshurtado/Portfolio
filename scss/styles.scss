@@ -25,10 +25,23 @@ body{
     }
 }
 
+@keyframes appear {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
 .brand{
     background-color: $color1;
-    flex-grow: 2;
-    transition: flex-grow 1s;
+    flex-grow: 6;
+
+    @media(min-width: 350px){
+        flex-grow: 2;
+    }
+
+    transition: flex-grow 2s;
+
+    display: flex;
+    align-items: center;
 
     &.collapsed{
 		flex-grow: 0;
