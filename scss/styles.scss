@@ -50,14 +50,12 @@ body{
             display: none;
         }
     }
-
-    display: flex;
-    align-items: center;
 }
 
 .centered-content{
     display: inline-block;
     margin: 0 auto;
+    animation: appear 2s;
 }
 
 .sections{
