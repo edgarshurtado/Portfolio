@@ -26,18 +26,30 @@ body{
     flex-grow: 2;
     transition: flex-grow 1s;
 
-	p { transition: font-size 1s; }
-
     &.collapsed{
 		flex-grow: 0;
 
-		p { font-size: 0;}
+		div {
+            display: none;
+        }
     }
+
+    display: flex;
+    align-items: center;
+}
+
+.centered-content{
+    display: inline-block;
+    margin: 0 auto;
 }
 
 .sections{
     flex-grow: 1;
     transition: flex-grow 1s;
+
+    display: flex;
+    flex-direction: column;
+
     &.expanded {
         flex-grow: 10;
     }
@@ -46,13 +58,17 @@ body{
         flex-grow: 1;
     }
 
-    display: flex;
-    flex-direction: column;
-
     .section{
         flex-grow: 1;
         position: relative;
         transition: flex-grow 1s;
+
+        display: flex;
+        align-items: center;
+
+        & .collapsed-text, & .expanded-text{
+            margin: 0 auto;
+        }
 
         &.cv{
             background-color: $color2;
@@ -77,9 +93,14 @@ body{
         }
     }
 
-
     .section.expanded{
         flex-grow: 10;
     }
 
+}
+
+.collapse-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
