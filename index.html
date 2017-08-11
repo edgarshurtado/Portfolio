@@ -2,18 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link rel="stylesheet" href="./public/styles.css">
   <script src="http://localhost:35729/livereload.js"></script>
   <title>Edgar S. Hurtado Portfolio</title>
-  <link rel="stylesheet" href="./public/styles.css">
 </head>
 <body>
-  <div class="content">
-    <div class="header">Edgar S. Hurtado</div>
-    <div class="sections">
-      <div class="section cv">Curriculum Vitae</div>
-      <div class="section projects">Projects</div>
-      <div class="section contact">Contact</div>
+    <div class="brand">
+      <div class='centered-content'>Edgar S. Hurtado</div>
     </div>
-  </div>
+    <div class="sections">
+      <section id='cv-section' class="section cv">
+        <i role="button" class='collapse-btn fontawesome-remove'></i>
+        <div class='collapsed-text'>About me</div>
+        <div class='expanded-text'>This is my Curriculum Vitae</div>
+      </section>
+      <section id='projects-section' class="section projects">
+        <i role="button" class='collapse-btn fontawesome-remove'></i>
+        <div class='collapsed-text'>Projects</div>
+        <div class='expanded-text'>These are my projects</div>
+      </section>
+      <section id='contact-section' class="section contact">
+        <i role="button" class='collapse-btn fontawesome-remove'></i>
+        <div class='collapsed-text'>Contact</div>
+        <div class='expanded-text'>Contact me</div>
+      </section>
+    </div>
+  <script src='public/app.js'></script>
 </body>
 </html>

@@ -1,48 +1,106 @@
+@import '_resources.scss';
+
 body{
     width: 100%;
     height: 100vh;
     margin: 0;
     padding: 0;
-}
+    font-family: Lato;
+    color: white;
+    font-size: 1.5em;
 
-.content{
     display: flex;
     flex-direction: column;
-    height: 100%;
 
-    @media(min-width: 426px){
+    @media(min-width: 450px){
         flex-direction: row;
     }
 }
 
-.header{
-    background-color: green;
-    flex-grow: 2;
+.brand{
+    background-color: $color1;
+    flex-grow: 6;
+
+    @media(min-width: 350px){
+        flex-grow: 2;
+    }
+
+    transition: flex-grow 1s;
+
+    display: flex;
+    align-items: center;
+
+    &.collapsed{
+		flex-grow: 0;
+
+        .centered-content{
+            display: none;
+        }
+    }
+}
+
+.centered-content{
+    display: inline-block;
+    margin: 0 auto;
+    animation: appear 2s;
 }
 
 .sections{
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 
+    transition: flex-grow 1s;
+    &.expanded {
+        flex-grow: 10;
+    }
     @media(min-width: 426px){
         flex-grow: 1;
     }
 
-    display: flex;
-    flex-direction: column;
-
     .section{
         flex-grow: 1;
-    }
+        position: relative;
+        transition: flex-grow 1s;
 
-    .section.cv{
-        background-color: red;
-    }
+        display: flex;
+        align-items: center;
 
-    .section.projects{
-        background-color: blue;
-    }
+        & .collapsed-text, & .expanded-text{
+            margin: 0 auto;
+        }
 
-    .section.contact{
-        background-color: purple
+        &.cv{
+            background-color: $color2;
+        }
+        &.projects{
+            background-color: $color3;
+        }
+        &.contact{
+            background-color: $color4;
+        }
+
+        &:not(.expanded){
+            .expanded-text, .collapse-btn{
+                display: none;
+            }
+        }
+
+        &.expanded{
+            flex-grow: 14;
+            .collapsed-text{
+                display:none;
+            }
+        }
+    }
+}
+
+.collapse-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-style: inherit;
+    &:hover{
+        cursor:pointer;
     }
 }
