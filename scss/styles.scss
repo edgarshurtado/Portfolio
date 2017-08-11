@@ -1,9 +1,4 @@
-$color1: #244F75;
-$color2: #60BFBF;
-$color3: #8C4B7E;
-$color4: #F8BB44;
-$color5: #F24B4B;
-
+@import '_resources.scss';
 
 body{
     width: 100%;
@@ -13,21 +8,13 @@ body{
     font-family: Lato;
     color: white;
     font-size: 1.5em;
-}
 
-.content{
     display: flex;
     flex-direction: column;
-    height: 100%;
 
     @media(min-width: 350px){
         flex-direction: row;
     }
-}
-
-@keyframes appear {
-    from {opacity: 0}
-    to {opacity: 1}
 }
 
 .brand{
@@ -60,15 +47,13 @@ body{
 
 .sections{
     flex-grow: 1;
-    transition: flex-grow 1s;
-
     display: flex;
     flex-direction: column;
 
+    transition: flex-grow 1s;
     &.expanded {
         flex-grow: 10;
     }
-
     @media(min-width: 426px){
         flex-grow: 1;
     }
@@ -102,16 +87,12 @@ body{
         }
 
         &.expanded{
+            flex-grow: 10;
             .collapsed-text{
                 display:none;
             }
         }
     }
-
-    .section.expanded{
-        flex-grow: 10;
-    }
-
 }
 
 .collapse-btn {
