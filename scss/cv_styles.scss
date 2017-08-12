@@ -1,0 +1,22 @@
+.section.cv{
+    article{
+        display: flex;
+        flex-direction: row;
+        font-size: 0.7em;
+
+        justify-content: space-between;
+
+        .side-content{
+            flex: 1;
+            font-style: italic;
+            padding: 0 10px 0 0;
+            border-right: 1px solid black;
+        }
+
+        .principal-content{
+            flex: 2;
+            padding: 0 0 0 10px;
+            color: #113654;
+        }
+    }
+}

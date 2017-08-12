@@ -45,6 +45,12 @@ body{
     animation: appear 2s;
 }
 
+.scrollable-content{
+    height: 80vh;
+    overflow: scroll;
+    padding: 0 10px;
+}
+
 .sections{
     flex-grow: 1;
     display: flex;
@@ -68,6 +74,10 @@ body{
 
         & .collapsed-text, & .expanded-text{
             margin: 0 auto;
+        }
+
+        .expanded-text{
+             width: 100%;
         }
 
         &.cv{
