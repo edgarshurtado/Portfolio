@@ -1,0 +1,57 @@
+.brand{
+    .img-holder{
+        overflow: hidden;
+        border-radius: 50%;
+        width: 250px;
+        height: 250px;
+
+        img{
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+    }
+
+    text-align: center;
+
+    h1 {
+        font-size: 1.2em;
+    }
+
+    h2 {
+        font-size: 1em;
+    }
+
+    .social-wrapper {
+        display:flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .social {
+        display: inline-block;
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        a:visited{
+            color: white;
+        }
+
+        p {
+            font-size: 0.7em;
+            visibility: hidden;
+            margin-top: 2px;
+        }
+
+        &:hover{
+            cursor: pointer;
+            p {
+                display: block;
+                visibility: visible;
+            }
+        }
+    }
+}
