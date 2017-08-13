@@ -6,17 +6,38 @@
 
         justify-content: space-between;
 
+        h3 {
+            border-bottom: 1px dashed white;
+            display: inline-block;
+            padding: 0 0 10px 0;
+        }
+
         .side-content{
             flex: 1;
             font-style: italic;
             padding: 0 10px 0 0;
-            border-right: 1px solid black;
+            border-right: 1px solid white;
         }
 
         .principal-content{
-            flex: 2;
+            flex: 3;
             padding: 0 0 0 10px;
-            color: #113654;
+            color: white;
+
+            ul{
+                margin-top: 0;
+            }
+
+            .technologies{
+                list-style: none;
+                li {
+                    float: left;
+                    margin-right: 14px;
+                }
+                img{
+                    height: 24px;
+                }
+            }
         }
     }
 }
