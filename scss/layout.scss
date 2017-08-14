@@ -45,6 +45,12 @@ body{
     animation: appear 2s;
 }
 
+.scrollable-content{
+    height: 80vh;
+    overflow: scroll;
+    padding: 0 10px;
+}
+
 .sections{
     flex-grow: 1;
     display: flex;
@@ -68,6 +74,16 @@ body{
 
         & .collapsed-text, & .expanded-text{
             margin: 0 auto;
+        }
+
+        .expanded-text{
+             width: 100%;
+             @media(min-width: 900px){
+                 width: 900px;
+                 margin-left: auto;
+                 margin-right: auto;
+             }
+
         }
 
         &.cv{
@@ -102,5 +118,9 @@ body{
     font-style: inherit;
     &:hover{
         cursor:pointer;
+    }
+
+    @media(min-width: 1200px){
+        right: 13%;
     }
 }
