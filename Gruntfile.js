@@ -18,7 +18,8 @@ module.exports = function(grunt){
               'public/layout.css': 'scss/layout.scss',
               'public/brand_styles.css': 'scss/brand_styles.scss',
               'public/cv_styles.css': 'scss/cv_styles.scss',
-              'public/projects_styles.css': 'scss/projects_styles.scss'
+              'public/projects_styles.css': 'scss/projects_styles.scss',
+              'public/contact_styles.css': 'scss/contact_styles.scss'
           }
         }
     },
