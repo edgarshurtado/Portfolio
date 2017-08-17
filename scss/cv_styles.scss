@@ -1,3 +1,5 @@
+@import '_resources.scss';
+
 .section.cv{
     article{
         display: flex;
@@ -21,9 +23,11 @@
             }
         }
 
+        $sideContentFontStyle : italic;
+
         .side-content{
             flex: 1;
-            font-style: italic;
+            font-style: $sideContentFontStyle;
             padding: 0 10px 0 0;
             border-right: 1px solid white;
 
@@ -42,7 +46,7 @@
 
         .mobile-side-content{
             flex:1;
-            font-style: italic;
+            font-style: $sideContentFontStyle;
             border-bottom: 1px dashed white;
             display: none;
             margin-bottom: 15px;
@@ -59,24 +63,16 @@
         .principal-content{
             flex: 3;
             padding: 0 0 0 50px;
-            color: white;
+            color: $primary-font-color;
 
             @media(max-width: 500px){
                 padding: 0;
             }
 
-            font-family: "Open Sans", sans-serif;
+            font-family: $secondary-font-family;
 
             .technologies{
-                margin-top: 0;
-                list-style: none;
-                li {
-                    float: left;
-                    margin-right: 14px;
-                }
-                img{
-                    height: 30px;
-                }
+                @include iconsList();
             }
         }
     }

@@ -1,12 +1,29 @@
-$color1: #244F75;
-$color2: #60BFBF;
-$color3: #8C4B7E;
-$color4: #F8BB44;
+$brandBackgroundColor: #244F75;
+$cvBackgroundColor: #60BFBF;
+$projectsBackgroundColor: #8C4B7E;
+$contactBackgroundColor: #F8BB44;
 $color5: #F24B4B;
+
+$primary-font-family: Lato;
+$secondary-font-family: "Open Sans", sans-serif;
+
+$primary-font-color: white;
 
 @keyframes appear {
     from {opacity: 0}
     to {opacity: 1}
+}
+
+@mixin iconsList(){
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    img{
+        height: 30px;
+    }
 }
 
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
