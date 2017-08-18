@@ -1,2 +1,65 @@
 @import '_resources.scss';
 
+#contact-section{
+    .contact-form{
+        flex-grow: 3;
+    }
+
+    form > input[type="text"] {
+        margin-bottom: 10px;
+    }
+
+    .contact-data{
+        flex-grow: 1;
+    }
+
+    input[type="text"]{
+        display: block;
+        width: 50%;
+        padding: 10px 10px 20px 10px;
+        color: $contactBackgroundColor;
+        font-weight: 500;
+        font-size: .6em;
+    }
+
+    textarea {
+        width: 80%;
+        color: $contactBackgroundColor;
+        font-weight: 500;
+        font-size: .6em;
+        padding: 10px 10px 20px 10px;
+        border: none;
+    }
+
+    input[type="submit"]{
+        display: block;
+        padding: 10px 30px;
+        color: white;
+        background-color: transparent;
+        border: 1px solid white;
+        font-size: .8em;
+        font-weight: 500;
+
+        &:hover {
+            background-color: white;
+            color: $contactBackgroundColor;
+        }
+    }
+    ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color:    $contactBackgroundColor;
+    }
+    :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+       color:    $contactBackgroundColor;
+       opacity:  1;
+    }
+    ::-moz-placeholder { /* Mozilla Firefox 19+ */
+       color:    $contactBackgroundColor;
+       opacity:  1;
+    }
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+       color:    $contactBackgroundColor;
+    }
+    ::-ms-input-placeholder { /* Microsoft Edge */
+       color:    $contactBackgroundColor;
+    }
+}

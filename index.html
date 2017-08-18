@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="./public/brand_styles.css">
   <link rel="stylesheet" href="./public/cv_styles.css">
   <link rel="stylesheet" href="./public/projects_styles.css">
+  <link rel="stylesheet" href="./public/contact_styles.css">
   <script src="http://localhost:35729/livereload.js"></script>
   <title>Edgar S. Hurtado Portfolio</title>
 </head>
@@ -263,8 +264,15 @@
       <section id='contact-section' class="section contact">
         <i role="button" class='collapse-btn fontawesome-remove'></i>
         <div class='collapsed-card-content'>Contact</div>
-        <div class='expanded-card-content scrollable-content'>
-          <div class="contact-form"> Form goes here </div>
+        <div class='expanded-card-content scrollable-content flex-row'>
+          <div class="contact-form">
+            <form action="#">
+              <input type="text" placeholder="Name">
+              <input type="text" placeholder="Email">
+              <textarea rows="5">Write your message...</textarea>
+              <input type="submit" value="Send">
+            </form>
+          </div>
           <div class="contact-data"> Contact data goes here </div>
         </div>
       </section>
