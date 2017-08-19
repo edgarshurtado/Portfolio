@@ -5,7 +5,7 @@ const sectionsDiv = document.querySelector('.sections')
 
 const getElementSiblings = function(element) { // solution inspired by https://stackoverflow.com/a/7354231
 
-    const siblingsArray = [].slice.call(element.parentElement.children)
+    const siblingsArray = Array.from(element.parentElement.children)
 
     return siblingsArray.filter( child => {
         return child !== element
