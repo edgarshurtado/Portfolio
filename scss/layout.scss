@@ -20,6 +20,9 @@ body{
 .flex-row {
     display: flex;
     flex-direction: row;
+    @media(max-width: 600px){
+        flex-direction: column;
+    }
 }
 
 .brand{
@@ -73,12 +76,18 @@ body{
         flex-grow: 1;
         position: relative;
         transition: flex-grow 1s;
+        padding-top: 10px;
 
         display: flex;
         align-items: center;
 
         & .collapsed-card-content, & .expanded-card-content{
             margin: 0 auto;
+        }
+
+        .collapsed-card-content{
+            font-size: 1.3em;
+            font-family: "Francois one";
         }
 
         .expanded-card-content{
@@ -109,8 +118,16 @@ body{
 
         &.expanded{
             flex-grow: 14;
+            flex-direction: column;
             .collapsed-card-content{
-                display:none;
+                text-align: right;
+                width: 20%;
+                margin: 0 auto 10px 0;
+                font-size: 1.5em;
+                border-bottom: 3px solid white;
+                @media(max-width: 600px){
+                    width: 50%;
+                }
             }
         }
     }
