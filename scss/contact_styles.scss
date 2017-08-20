@@ -2,7 +2,6 @@
 
 #contact-section{
 
-
     .expanded-card-content div{
         padding: 20px 0;
 
@@ -16,7 +15,16 @@
 
     .contact-form{
         flex-grow: 3;
-        border-top: 3px solid white;
+		position: relative;
+		&:after {
+			position: absolute;
+			top: 40px;
+			height: 200px;
+			right: 0;
+			content: "";
+			border: 1px solid white;
+
+		}
     }
 
     form > input[type="text"] {
@@ -25,7 +33,6 @@
 
     .contact-data{
         flex-grow: 1;
-        border-top: 3px solid white;
 
         ul {
             list-style: none;
@@ -46,6 +53,9 @@
         color: $contactBackgroundColor;
         font-weight: 500;
         font-size: .6em;
+		@media(max-width: 450px){
+			width: 100%;
+		}
     }
 
     textarea {
