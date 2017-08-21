@@ -56,7 +56,6 @@ body{
 .scrollable-content{
     height: 80vh;
     overflow: scroll;
-    padding: 0 10px;
 }
 
 .sections{
@@ -118,6 +117,13 @@ body{
         &.expanded{
             flex-grow: 14;
             flex-direction: column;
+            .expanded-card-content {
+                margin: 0;
+                width: 100%;
+                & > * {
+                    margin: inherit 10px;
+                }
+            }
             .collapsed-card-content{
                 text-align: right;
                 width: 20%;
