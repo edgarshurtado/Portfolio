@@ -1,6 +1,9 @@
 @import '_resources.scss';
 
 .section.cv{
+    h2 {
+        margin-top: 0;
+    }
     article{
         display: flex;
         flex-direction: row;
