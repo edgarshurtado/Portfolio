@@ -20,7 +20,7 @@ body{
 .flex-row {
     display: flex;
     flex-direction: row;
-    @media(max-width: 600px){
+    @media(max-width: 901px){
         flex-direction: column;
     }
 }
@@ -126,13 +126,10 @@ body{
             }
             .collapsed-card-content{
                 text-align: right;
-                width: 20%;
+                padding-left: 60px;
                 margin: 0 auto 10px 0;
                 font-size: 1.5em;
                 border-bottom: 3px solid white;
-                @media(max-width: 600px){
-                    width: 50%;
-                }
             }
         }
     }
