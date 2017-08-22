@@ -71,22 +71,14 @@ body{
         display: flex;
         align-items: center;
 
-        & .collapsed-card-content, & .expanded-card-content{
-            margin: 0 auto;
-        }
-
         .collapsed-card-content{
+            margin: 0 auto;
             font-size: 1.3em;
             font-family: "Francois one";
         }
 
         .expanded-card-content{
-             @media(min-width: 900px){
-                 width: 900px;
-                 margin-left: auto;
-                 margin-right: auto;
-             }
-
+            padding: 20px;
         }
 
         &.cv{
@@ -110,7 +102,11 @@ body{
             flex-direction: column;
             .expanded-card-content {
                 margin: 0;
-                width: 100%;
+                 @media(min-width: 901px){
+                     width: 901px;
+                     margin-left: auto;
+                     margin-right: auto;
+                 }
                 & > * {
                     margin: inherit 10px;
                 }

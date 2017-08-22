@@ -3,8 +3,8 @@
 #contact-section{
 
     .expanded-card-content {
+        width: 90%;
         div{
-            padding: 20px;
             @media(min-width: 901px){
                 &:first-child{
                     margin-right:10px;
@@ -17,7 +17,9 @@
     }
 
     .contact-form{
+        margin-bottom: 15px;
         @media(min-width: 901px){
+            margin-bottom: 0;
             position: relative;
             flex-grow: 3;
             &::after {
@@ -27,7 +29,6 @@
                 right: 0;
                 content: "";
                 border: 1px solid white;
-
             }
         }
     }
@@ -36,7 +37,7 @@
         ul {
             list-style: none;
             margin: 0;
-            padding: 0 0 0 20px;
+            padding: 0;
             li span {
                 display: inline-block;
                 margin-right: 10px;
