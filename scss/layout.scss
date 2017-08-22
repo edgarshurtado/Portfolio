@@ -12,7 +12,7 @@ body{
     display: flex;
     flex-direction: column;
 
-    @media(min-width: 450px){
+    @media(min-width: 901px){
         flex-direction: row;
     }
 }
@@ -28,13 +28,7 @@ body{
 .brand{
     background-color: $brandBackgroundColor;
     flex-grow: 6;
-
-    @media(min-width: 350px){
-        flex-grow: 2;
-    }
-
     transition: flex-grow 1s;
-
     display: flex;
     align-items: center;
 
@@ -66,9 +60,6 @@ body{
     transition: flex-grow 1s;
     &.expanded {
         flex-grow: 10;
-    }
-    @media(min-width: 426px){
-        flex-grow: 1;
     }
 
     .section{
