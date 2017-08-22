@@ -12,7 +12,7 @@ body{
     display: flex;
     flex-direction: column;
 
-    @media(min-width: 450px){
+    @media(min-width: 901px){
         flex-direction: row;
     }
 }
@@ -20,7 +20,7 @@ body{
 .flex-row {
     display: flex;
     flex-direction: row;
-    @media(max-width: 600px){
+    @media(max-width: 901px){
         flex-direction: column;
     }
 }
@@ -28,13 +28,7 @@ body{
 .brand{
     background-color: $brandBackgroundColor;
     flex-grow: 6;
-
-    @media(min-width: 350px){
-        flex-grow: 2;
-    }
-
     transition: flex-grow 1s;
-
     display: flex;
     align-items: center;
 
@@ -56,7 +50,6 @@ body{
 .scrollable-content{
     height: 80vh;
     overflow: scroll;
-    padding: 0 10px;
 }
 
 .sections{
@@ -68,9 +61,6 @@ body{
     &.expanded {
         flex-grow: 10;
     }
-    @media(min-width: 426px){
-        flex-grow: 1;
-    }
 
     .section{
         flex-grow: 1;
@@ -81,23 +71,14 @@ body{
         display: flex;
         align-items: center;
 
-        & .collapsed-card-content, & .expanded-card-content{
-            margin: 0 auto;
-        }
-
         .collapsed-card-content{
+            margin: 0 auto;
             font-size: 1.3em;
             font-family: "Francois one";
         }
 
         .expanded-card-content{
-             width: 100%;
-             @media(min-width: 900px){
-                 width: 900px;
-                 margin-left: auto;
-                 margin-right: auto;
-             }
-
+            padding: 20px;
         }
 
         &.cv{
@@ -119,15 +100,23 @@ body{
         &.expanded{
             flex-grow: 14;
             flex-direction: column;
+            .expanded-card-content {
+                margin: 0;
+                 @media(min-width: 901px){
+                     width: 901px;
+                     margin-left: auto;
+                     margin-right: auto;
+                 }
+                & > * {
+                    margin: inherit 10px;
+                }
+            }
             .collapsed-card-content{
                 text-align: right;
-                width: 20%;
+                padding-left: 60px;
                 margin: 0 auto 10px 0;
                 font-size: 1.5em;
                 border-bottom: 3px solid white;
-                @media(max-width: 600px){
-                    width: 50%;
-                }
             }
         }
     }
