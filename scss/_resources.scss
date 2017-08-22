@@ -17,6 +17,7 @@ $primary-font-color: white;
 
 @mixin iconsList(){
     margin: 0;
+    padding-left: 0;
     list-style: none;
     display: flex;
     flex-direction: row;
