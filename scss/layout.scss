@@ -79,9 +79,10 @@ body{
 
         .expanded-card-content{
             padding: 20px;
+            width: 90%;
         }
 
-        &.cv{
+     &.cv{
             background-color: $cvBackgroundColor;
         }
         &.projects{
@@ -106,6 +107,7 @@ body{
                      width: 901px;
                      margin-left: auto;
                      margin-right: auto;
+                     padding: 20px 0;
                  }
                 & > * {
                     margin: inherit 10px;
