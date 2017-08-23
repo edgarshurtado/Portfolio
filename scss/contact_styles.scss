@@ -2,42 +2,33 @@
 
 #contact-section{
 
-    .expanded-card-content {
-        width: 90%;
-        div{
-            @media(min-width: 901px){
-                &:first-child{
-                    margin-right:10px;
-                }
-                &:last-child{
-                    margin-left:10px;
-                }
-            }
-        }
-    }
-
     .contact-form{
         margin-bottom: 15px;
         @media(min-width: 901px){
             margin-bottom: 0;
             position: relative;
-            flex-grow: 3;
+            flex-grow: 1;
+            flex-basis: 0;
             &::after {
                 position: absolute;
-                top: 40px;
-                height: 200px;
-                right: 0;
+                top: -5px;
+                height: 300px;
+                right: -1px;
                 content: "";
-                border: 1px solid white;
+                border: 2px solid white;
             }
         }
     }
 
     .contact-data{
+        flex-grow: 1;
+        flex-basis: 0;
         ul {
             list-style: none;
             margin: 0;
             padding: 0;
+            display: block;
+            text-align: center;
             li span {
                 display: inline-block;
                 margin-right: 10px;
@@ -68,6 +59,9 @@
         font-size: .6em;
         padding: 10px 10px 20px 10px;
         border: none;
+        @media(min-width: 901px){
+            width: 75%;
+        }
     }
 
     input[type="submit"]{
