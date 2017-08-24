@@ -99,9 +99,11 @@ body{
         }
 
         &.expanded{
-            flex-grow: 14;
+            flex-grow: 200;
+            flex-basis: 0;
             flex-direction: column;
             .expanded-card-content {
+                animation: appear 2s;
                 margin: 0;
                  @media(min-width: 901px){
                      width: 901px;
