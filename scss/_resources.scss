@@ -28,6 +28,26 @@ $primary-font-color: white;
     }
 }
 
+@mixin inner-strip-style($rotation, $width){
+    &::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: $width;
+        height: 100%;
+        background-color: white;
+        opacity: 0.1;
+        transform-origin: center center;
+        transform: skew($rotation) scaleY(1) translate(-50%, 0);
+        z-index: 0;
+    }
+
+    & > * {
+        z-index: 1;
+    }
+}
+
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
 
 /* fontawesome */

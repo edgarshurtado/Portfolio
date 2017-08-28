@@ -31,10 +31,17 @@ body{
     transition: flex-grow 1s;
     display: flex;
     align-items: center;
+    overflow: hidden;
+
+    &:not(.collapsed){
+        @include inner-strip-style(15deg, 100%);
+        @media(min-width:901px){
+            @include inner-strip-style(30deg, 60%);
+        }
+    }
 
     &.collapsed{
 		flex-grow: 0;
-
         .centered-content{
             display: none;
         }
@@ -70,6 +77,7 @@ body{
 
         display: flex;
         align-items: center;
+        overflow: hidden;
 
         .collapsed-card-content{
             margin: 0 auto;
@@ -82,7 +90,7 @@ body{
             width: 90%;
         }
 
-     &.cv{
+        &.cv{
             background-color: $cvBackgroundColor;
         }
         &.projects{
@@ -93,6 +101,10 @@ body{
         }
 
         &:not(.expanded){
+            @include inner-strip-style(-30deg, 100%);
+            @media(min-width: 901px){
+                @include inner-strip-style(-30deg, 100%);
+            }
             .expanded-card-content, .collapse-btn{
                 display: none;
             }
