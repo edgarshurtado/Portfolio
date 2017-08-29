@@ -27,16 +27,16 @@ body{
 
 .brand{
     background-color: $brandBackgroundColor;
-    flex-grow: 3;
+    flex-grow: 2;
     transition: flex-grow 1s;
     display: flex;
     align-items: center;
     overflow: hidden;
 
     &:not(.collapsed){
-        @include inner-strip-style(30deg, 70%, 75%);
+        @include inner-strip-style(30deg, 100%);
         @media(min-width: 901px){
-            @include inner-strip-style(30deg, 70%, 75%);
+            @include inner-strip-style(30deg, 70%, 40%);
         }
     }
 
