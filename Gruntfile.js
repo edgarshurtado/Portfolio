@@ -15,11 +15,11 @@ module.exports = function(grunt){
     "sass": {
         dist: {
           files: {
-              'css/layout.css': 'scss/layout.scss',
-              'css/brand_styles.css': 'scss/brand_styles.scss',
-              'css/cv_styles.css': 'scss/cv_styles.scss',
-              'css/projects_styles.css': 'scss/projects_styles.scss',
-              'css/contact_styles.css': 'scss/contact_styles.scss'
+              'public/layout.css': 'scss/layout.scss',
+              'public/brand_styles.css': 'scss/brand_styles.scss',
+              'public/cv_styles.css': 'scss/cv_styles.scss',
+              'public/projects_styles.css': 'scss/projects_styles.scss',
+              'public/contact_styles.css': 'scss/contact_styles.scss'
           }
         }
     },
@@ -27,7 +27,7 @@ module.exports = function(grunt){
         options: { livereload: true },
         css: {
             files: [ 'scss/*.scss'],
-            tasks: ['sass']
+            tasks: ['sass','postcss']
         },
         autoprefix: {
             files: ['css/*.css'],
@@ -45,7 +45,7 @@ module.exports = function(grunt){
       options: {
         map: true,
         processors: [
-            require('autoprefixer')({browsers: ["> 5%",'last 2 version']})
+            require('autoprefixer')({browsers: ["> 5%"]})
         ]
       },
       dist: {
