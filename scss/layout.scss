@@ -103,8 +103,7 @@ body{
         &:not(.expanded){
             @include inner-strip-style(-30deg, 100%);
             @media(min-width: 901px){
-                @include inner-strip-style(-30deg, 100%);
-                @include inner-strip-hover-animation();
+                @include inner-strip-with-hover-animation(-30deg, 100%);
             }
             .expanded-card-content, .collapse-btn{
                 display: none;

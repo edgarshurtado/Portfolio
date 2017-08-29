@@ -47,13 +47,14 @@ $primary-font-color: white;
     }
 }
 
-@mixin inner-strip-hover-animation(){
+@mixin inner-strip-with-hover-animation($rotation, $width, $left: 50%){
+    @include inner-strip-style($rotation, $width, $left);
     &::before{
         transition: width .2s;
     }
 
     &:hover::before{
-        width: 120%;
+        width: $width * 1.5;
     }
 }
 
