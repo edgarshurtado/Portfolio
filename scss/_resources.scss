@@ -28,12 +28,12 @@ $primary-font-color: white;
     }
 }
 
-@mixin inner-strip-style($rotation, $width){
+@mixin inner-strip-style($rotation, $width, $left: 50%){
     &::before{
         content: "";
         position: absolute;
         top: 0;
-        left: 50%;
+        left: $left;
         width: $width;
         height: 100%;
         background-color: white;
@@ -42,9 +42,18 @@ $primary-font-color: white;
         transform: skew($rotation) scaleY(1) translate(-50%, 0);
         z-index: 0;
     }
-
     & > * {
         z-index: 1;
+    }
+}
+
+@mixin inner-strip-hover-animation(){
+    &::before{
+        transition: width .2s;
+    }
+
+    &:hover::before{
+        width: 120%;
     }
 }
 

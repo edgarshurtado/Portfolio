@@ -34,9 +34,9 @@ body{
     overflow: hidden;
 
     &:not(.collapsed){
-        @include inner-strip-style(15deg, 100%);
-        @media(min-width:901px){
-            @include inner-strip-style(30deg, 60%);
+        @include inner-strip-style(30deg, 70%, 75%);
+        @media(min-width: 901px){
+            @include inner-strip-style(30deg, 70%, 75%);
         }
     }
 
@@ -104,6 +104,7 @@ body{
             @include inner-strip-style(-30deg, 100%);
             @media(min-width: 901px){
                 @include inner-strip-style(-30deg, 100%);
+                @include inner-strip-hover-animation();
             }
             .expanded-card-content, .collapse-btn{
                 display: none;
