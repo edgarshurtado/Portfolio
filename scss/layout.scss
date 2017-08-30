@@ -32,6 +32,7 @@ body{
     display: flex;
     align-items: center;
     overflow: hidden;
+    animation: slideUpperEntrance 1s;
 
     &:not(.collapsed){
         @include inner-strip-style(30deg, 100%);
@@ -101,12 +102,17 @@ body{
 
         &.cv{
             background-color: $cvBackgroundColor;
+            animation: slideSideEntrance 1s;
         }
         &.projects{
             background-color: $projectsBackgroundColor;
+            animation: slideSideEntrance 1s;
+            animation-delay: 1s;
         }
         &.contact{
             background-color: $contactBackgroundColor;
+            animation: slideSideEntrance 1s;
+            animation-delay: 2s;
         }
 
         &:not(.expanded){
