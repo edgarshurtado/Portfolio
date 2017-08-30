@@ -1,19 +1,20 @@
-<?php 
-if(isset($_POST['submit'])){
-    $to = "email@example.com"; // this is your Email address
-    $from = $_POST['email']; // this is the sender's Email address
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
-    $subject = "Form submission";
-    $subject2 = "Copy of your form submission";
-    $message = $first_name . " " . $last_name . " wrote the following:" . "\n\n" . $_POST['message'];
-    $message2 = "Here is a copy of your message " . $first_name . "\n\n" . $_POST['message'];
+<?php
+$to = "edsanhu@gmail.com"; // this is your Email address
+$from = $_POST['email']; // this is the sender's Email address
+$serverMail = 'system@edgarsh.es';
+$name = $_POST['name'];
+$rawMessage = $_POST['message'];
 
-    $headers = "From:" . $from;
-    $headers2 = "From:" . $to;
-    mail($to,$subject,$message,$headers);
-    mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
-    echo "Mail Sent. Thank you " . $first_name . ", we will contact you shortly.";
-    // You can also use header('Location: thank_you.php'); to redirect to another page.
-    }
+$subject = "Form submission";
+$subject2 = "Copy of your form submission";
+
+$message = "$name \n\n $rawMessage";
+$message2 = "Here is a copy of your message: \n\n" . $message;
+
+$header = "From: $serverMail";
+
+mail($to,$subject,$message,$header);
+mail($from,$subject2,$message2,$header); // sends a copy of the message to the sender
+echo "Thank you for your message";
+header('refresh:2;url=http://edgarsh.es/projects/portfolio-demo');
 
