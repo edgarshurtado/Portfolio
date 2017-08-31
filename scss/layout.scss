@@ -34,7 +34,7 @@ body{
     display: flex;
     align-items: center;
     overflow: hidden;
-    animation: slideUpperEntrance 1s;
+    animation: slideUpperEntrance 2s;
 
     &:not(.collapsed){
         @include inner-strip-style(30deg, 100%);
@@ -106,15 +106,15 @@ body{
 
         &.cv{
             background-color: $cvBackgroundColor;
-            animation: slideFromRightSideEntrance 1s;
+            animation: slideFromRightSideEntrance 2s;
         }
         &.projects{
             background-color: $projectsBackgroundColor;
-            animation: slideFromLeftSideEntrance 1s;
+            animation: slideFromLeftSideEntrance 2s;
         }
         &.contact{
             background-color: $contactBackgroundColor;
-            animation: slideFromRightSideEntrance 1s;
+            animation: slideFromRightSideEntrance 2s;
         }
 
         &:not(.expanded){
