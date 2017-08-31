@@ -20,8 +20,13 @@ $primary-font-color: white;
     to {transform: translateY(0)}
 }
 
-@keyframes slideSideEntrance{
+@keyframes slideFromLeftSideEntrance{
     from {transform: translateX(110%)}
+    to {transform: translateY(0)}
+}
+
+@keyframes slideFromRightSideEntrance{
+    from {transform: translateX(-110%)}
     to {transform: translateY(0)}
 }
 
