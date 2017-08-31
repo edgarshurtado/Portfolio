@@ -27,16 +27,19 @@ body{
 
 .brand{
     background-color: $brandBackgroundColor;
-    flex-grow: 2;
+    position: relative;
+    flex-grow: 3;
+    flex-basis: 0;
     transition: flex-grow 1s;
     display: flex;
     align-items: center;
     overflow: hidden;
+    animation: slideUpperEntrance 2s;
 
     &:not(.collapsed){
         @include inner-strip-style(30deg, 100%);
         @media(min-width: 901px){
-            @include inner-strip-style(30deg, 70%, 40%);
+            @include inner-strip-style(30deg, 90%, 40%);
         }
     }
 
@@ -64,6 +67,7 @@ body{
     flex-basis: 0;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 
     transition: flex-grow 1s;
     &.expanded {
@@ -72,6 +76,7 @@ body{
 
     .section{
         flex-grow: 1;
+        flex-basis: 0;
         position: relative;
         transition: flex-grow 1s;
         padding-top: 10px;
@@ -101,12 +106,15 @@ body{
 
         &.cv{
             background-color: $cvBackgroundColor;
+            animation: slideFromRightSideEntrance 2s;
         }
         &.projects{
             background-color: $projectsBackgroundColor;
+            animation: slideFromLeftSideEntrance 2s;
         }
         &.contact{
             background-color: $contactBackgroundColor;
+            animation: slideFromRightSideEntrance 2s;
         }
 
         &:not(.expanded){
@@ -121,7 +129,7 @@ body{
         }
 
         &.expanded{
-            flex-grow: 200;
+            flex-grow: 20;
             flex-basis: 0;
             flex-direction: column;
             .expanded-card-content {

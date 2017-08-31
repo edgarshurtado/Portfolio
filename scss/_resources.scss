@@ -15,6 +15,21 @@ $primary-font-color: white;
     to {opacity: 1}
 }
 
+@keyframes slideUpperEntrance{
+    from {transform: translateY(-110%)}
+    to {transform: translateY(0)}
+}
+
+@keyframes slideFromLeftSideEntrance{
+    from {transform: translateX(110%)}
+    to {transform: translateY(0)}
+}
+
+@keyframes slideFromRightSideEntrance{
+    from {transform: translateX(-110%)}
+    to {transform: translateY(0)}
+}
+
 @mixin iconsList(){
     margin: 0;
     padding-left: 0;
