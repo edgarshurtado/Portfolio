@@ -1,0 +1,168 @@
+@import '_resources.scss';
+
+body{
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: $primary-font-family;
+    color: $primary-font-color;
+    font-size: 1.5em;
+
+    display: flex;
+    flex-direction: column;
+
+    @media(min-width: 901px){
+        flex-direction: row;
+    }
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    @media(max-width: 901px){
+        flex-direction: column;
+    }
+}
+
+.brand{
+    background-color: $brandBackgroundColor;
+    position: relative;
+    flex-grow: 3;
+    flex-basis: 0;
+    transition: flex-grow 1s;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    animation: slideUpperEntrance 2s;
+
+    &:not(.collapsed){
+        @include inner-strip-style(30deg, 100%);
+        @media(min-width: 901px){
+            @include inner-strip-style(30deg, 90%, 40%);
+        }
+    }
+
+    &.collapsed{
+		flex-grow: 0;
+        .centered-content{
+            display: none;
+        }
+    }
+}
+
+.centered-content{
+    display: inline-block;
+    margin: 0 auto;
+    animation: appear 2s;
+}
+
+.scrollable-content{
+    height: 68vh;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.sections{
+    flex-grow: 1;
+    flex-basis: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    transition: flex-grow 1s;
+    &.expanded {
+        flex-grow: 10;
+    }
+
+    .section{
+        flex-grow: 1;
+        flex-basis: 0;
+        position: relative;
+        transition: flex-grow 1s;
+        padding-top: 10px;
+
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+
+        .collapsed-card-content{
+            margin: 0 auto;
+            font-size: 1.3em;
+            font-family: "Francois one";
+            transition: font-size .5s;
+        }
+
+        @media(min-width: 901px){
+            &:hover .collapsed-card-content{
+                font-size: 1.5em;
+            }
+        }
+
+
+        .expanded-card-content{
+            padding: 20px;
+            width: 90%;
+        }
+
+        &.cv{
+            background-color: $cvBackgroundColor;
+            animation: slideFromRightSideEntrance 2s;
+        }
+        &.projects{
+            background-color: $projectsBackgroundColor;
+            animation: slideFromLeftSideEntrance 2s;
+        }
+        &.contact{
+            background-color: $contactBackgroundColor;
+            animation: slideFromRightSideEntrance 2s;
+        }
+
+        &:not(.expanded){
+            cursor: pointer;
+            @include inner-strip-style(-30deg, 100%);
+            @media(min-width: 901px){
+                @include inner-strip-with-hover-animation(-30deg, 100%);
+            }
+            .expanded-card-content, .collapse-btn{
+                display: none;
+            }
+        }
+
+        &.expanded{
+            flex-grow: 20;
+            flex-basis: 0;
+            flex-direction: column;
+            .expanded-card-content {
+                animation: appear 2s;
+                margin: 0;
+                 @media(min-width: 901px){
+                     width: 901px;
+                     margin-left: auto;
+                     margin-right: auto;
+                     padding: 20px 0;
+                 }
+                & > * {
+                    margin: inherit 10px;
+                }
+            }
+            .collapsed-card-content{
+                text-align: right;
+                padding-left: 60px;
+                margin: 0 auto 10px 0;
+                font-size: 1.5em;
+                border-bottom: 3px solid white;
+            }
+        }
+    }
+}
+
+.collapse-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-style: inherit;
+    &:hover{
+        cursor:pointer;
+    }
+}

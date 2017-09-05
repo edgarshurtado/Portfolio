@@ -15,18 +15,41 @@ module.exports = function(grunt){
     "sass": {
         dist: {
           files: {
-              'public/styles.css': 'scss/styles.scss'
+              'public/layout.css': 'scss/layout.scss',
+              'public/brand_styles.css': 'scss/brand_styles.scss',
+              'public/cv_styles.css': 'scss/cv_styles.scss',
+              'public/projects_styles.css': 'scss/projects_styles.scss',
+              'public/contact_styles.css': 'scss/contact_styles.scss'
           }
         }
     },
     "watch": {
-      css: {
-        files: [ 'scss/*.scss'],
-        tasks: ['sass']
+        options: { livereload: true },
+        css: {
+            files: [ 'scss/*.scss'],
+            tasks: ['sass','postcss']
+        },
+        autoprefix: {
+            files: ['css/*.css'],
+            tasks: ['postcss']
+        },
+        js: {
+            files: [ 'js/*.js'],
+            tasks: ['babel']
+        },
+        html: {
+            files: ["index.html"]
+        }
+    },
+    postcss: {
+      options: {
+        map: true,
+        processors: [
+            require('autoprefixer')({browsers: ["> 5%"]})
+        ]
       },
-      js: {
-        files: [ 'js/*.js'],
-        tasks: ['babel']
+      dist: {
+          src: 'public/*.css'
       }
     }
   });
@@ -34,5 +57,6 @@ module.exports = function(grunt){
   grunt.registerTask("sass-task", ["sass"]);
   grunt.registerTask("default", ["watch"]);
   grunt.registerTask("babel-task", ["babel"]);
+  grunt.registerTask("postcss-task", ["postcss"]);
 };
 

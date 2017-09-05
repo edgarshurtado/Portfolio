@@ -1,0 +1,82 @@
+$brandBackgroundColor: #244F75;
+$cvBackgroundColor: #8C4B7E;
+//$contactBackgroundColor: #F8BB44;
+$projectsBackgroundColor: #60BFBF;
+$redColor: #F24B4B;
+$contactBackgroundColor: $redColor;
+
+$primary-font-family: Lato;
+$secondary-font-family: "Open Sans", sans-serif;
+
+$primary-font-color: white;
+
+@keyframes appear {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+@keyframes slideUpperEntrance{
+    from {transform: translateY(-110%)}
+    to {transform: translateY(0)}
+}
+
+@keyframes slideFromLeftSideEntrance{
+    from {transform: translateX(110%)}
+    to {transform: translateY(0)}
+}
+
+@keyframes slideFromRightSideEntrance{
+    from {transform: translateX(-110%)}
+    to {transform: translateY(0)}
+}
+
+@mixin iconsList(){
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    img{
+        height: 30px;
+    }
+}
+
+@mixin inner-strip-style($rotation, $width, $left: 50%){
+    &::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: $left;
+        width: $width;
+        height: 100%;
+        background-color: white;
+        opacity: 0.1;
+        transform-origin: center center;
+        transform: skew($rotation) scaleY(1) translate(-50%, 0);
+        z-index: 0;
+    }
+    & > * {
+        z-index: 1;
+    }
+}
+
+@mixin inner-strip-with-hover-animation($rotation, $width, $left: 50%){
+    @include inner-strip-style($rotation, $width, $left);
+    &::before{
+        transition: width .2s;
+    }
+
+    &:hover::before{
+        width: $width * 1.5;
+    }
+}
+
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+/* fontawesome */
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+} 
+
