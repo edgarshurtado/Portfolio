@@ -26,5 +26,5 @@ mail($to,$subject,$message,$header);
 mail($from,$subject2,$message2,$header); // sends a copy of the message to the sender
 
 echo "Thank you for your message";
-header('refresh:2;url=http://edgarsh.es/projects/portfolio-demo');
+header('refresh:2;url=http://edgarsh.es');
 
