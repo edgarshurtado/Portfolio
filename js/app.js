@@ -18,7 +18,6 @@ const expandSection = function(section){
     setTimeout(() => {section.querySelector('.expanded-card-content').removeAttribute('style')}, 500)
     sectionsDiv.classList.add('expanded')
     brandSection.classList.add('collapsed')
-
 }
 
 const collapseSections = function(sections){
