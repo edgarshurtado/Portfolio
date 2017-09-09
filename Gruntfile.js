@@ -8,7 +8,8 @@ module.exports = function(grunt){
       },
       dist: {
         files: {
-          'public/app.js': 'js/app.js'
+          'public/app.js': 'js/app.js',
+          'public/form-submission.js': 'js/form-submission.js'
         }
       }
     },
