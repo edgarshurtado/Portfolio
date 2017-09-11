@@ -358,17 +358,18 @@
         <i role="button" class='collapse-btn fontawesome-remove'></i>
         <div class='collapsed-card-content'>Contact</div>
         <div class='expanded-card-content scrollable-content flex-row'>
+          <!-- Refactor this class -->
           <div class="contact-form">
             <form id="contact-form" action="backend/mailer.php" method="post">
-              <div class="form-group text-input">
+              <div id="name-form-group" class="form-group text-input">
                 <input id="name" type="text" name="name" placeholder="Name">
                 <label for="name" class="hidden">⚠️  Please, let me know your name or nick. I like to now who I'm talking to 🙃</label>
               </div>
-              <div class="form-group text-input">
+              <div id="email-form-group" class="form-group text-input">
                 <input id="email" type="text" name="email" placeholder="Email">
                 <label for="email" class="hidden">⚠️  Let me know your email or I won't be able to answer you 😅</label>
               </div>
-              <div class="form-group text-area">
+              <div id="message-form-group" class="form-group text-area">
                 <textarea rows="5" id="message" name="message" placeholder="Write your message..."></textarea>
                 <label for="message" class="hidden">⚠️  Come on, write something. What's the point of this form then? 🤔</label>
               </div>
