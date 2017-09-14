@@ -12,10 +12,12 @@ const messageFormGroup = document.querySelector('#message-form-group')
 const formGroupsToValidate = [nameFormGroup, emailFormGroup, messageFormGroup]
 
 const emptyInput = Symbol('emptyInput')
+const invalidEmail = Symbol('invalidEmail')
 const filledInput = Symbol('filledInput')
 
 const errorsTargetLabels = {
-	[emptyInput]: 'label'
+    [emptyInput]: 'label.empty-input',
+    [invalidEmail]: 'label.invalid-email'
 }
 
 form.addEventListener('submit', submitHandler)
@@ -33,8 +35,12 @@ function submitHandler(e){
 function notifyErrors(formGroup, errors){
 
 	for(const errorSymbol of Reflect.ownKeys(errorsTargetLabels)){
-		formGroup.querySelector(errorsTargetLabels[errorSymbol]).classList
-			.toggle('hidden', errors.findIndex((error) => error === errorSymbol) === -1 )
+        const errorLabel = formGroup.querySelector(errorsTargetLabels[errorSymbol])
+        if(errorLabel !== null){
+             errorLabel
+                .classList
+                .toggle('hidden', errors.findIndex((error) => error === errorSymbol) === -1 )
+        }
 	}
 }
 
@@ -46,19 +52,43 @@ function getFormErrorsWeakMap(){
         [messageFormGroup, []]
     ])
 
-    if(!nameIsFilled()){
-        errorsMap.set(nameFormGroup, [emptyInput])
-    }
-
-    if(!emailIsFilled()){
-        errorsMap.set(emailFormGroup, [emptyInput])
-    }
-
-    if(!messageIsFilled()){
-        errorsMap.set(messageFormGroup, [emptyInput])
-    }
+    errorsMap.set(nameFormGroup, getNameErrors())
+    errorsMap.set(emailFormGroup, getEmailErrors())
+    errorsMap.set(messageFormGroup, getMessageErrors())
 
     return errorsMap
+}
+
+function getNameErrors(){
+
+    let nameErrors = []
+    if(!nameIsFilled()){
+        nameErrors.push(emptyInput)
+    }
+
+    return nameErrors
+}
+
+function getEmailErrors(){
+    let emailErrors = []
+
+    if(!emailIsFilled()){
+        emailErrors.push(emptyInput)
+    }else if(!emailIsValid()){
+        emailErrors.push(invalidEmail)
+    }
+
+    return emailErrors
+}
+
+function getMessageErrors(){
+    let messageErrors = []
+
+    if(!messageIsFilled()){
+        messageErrors.push(emptyInput)
+    }
+
+    return messageErrors
 }
 
 function nameIsFilled(){
@@ -70,7 +100,8 @@ function emailIsFilled(){
 }
 
 function emailIsValid(){
-    // Implement
+    const re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+    return re.test(emailInput.value)
 }
 
 function messageIsFilled(){
