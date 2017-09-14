@@ -30,6 +30,11 @@ function submitHandler(e){
     for(const formGroup of formGroupsToValidate){
         notifyErrors(formGroup, formChecksErrorsWeakMap.get(formGroup))
     }
+
+    if(!isAnyErrorLabelBeenDisplayed()){
+        form.submit()
+    }
+
 }
 
 function notifyErrors(formGroup, errors){
@@ -110,4 +115,8 @@ function messageIsFilled(){
 
 function domInputElementIsFilled(domElement){
     return domElement.value.length !== 0
+}
+
+function isAnyErrorLabelBeenDisplayed(){
+    return document.querySelector('.form-group label:not(.hidden)') !== null
 }
