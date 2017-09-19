@@ -358,11 +358,22 @@
         <i role="button" class='collapse-btn fontawesome-remove'></i>
         <div class='collapsed-card-content'>Contact</div>
         <div class='expanded-card-content scrollable-content flex-row'>
+          <!-- Refactor this class -->
           <div class="contact-form">
-            <form action="backend/mailer.php" method="post">
-              <input type="text" name="name" placeholder="Name">
-              <input type="text" name="email" placeholder="Email">
-              <textarea rows="5" name="message" placeholder="Write your message..."></textarea>
+            <form id="contact-form" action="backend/mailer.php" method="post">
+              <div id="name-form-group" class="form-group text-input">
+                <input id="name" type="text" name="name" placeholder="Name">
+                <label for="name" class="hidden empty-input">⚠️  &nbsp;Please, let me know your name or nick. I like to now who I'm talking to 🙃</label>
+              </div>
+              <div id="email-form-group" class="form-group text-input">
+                <input id="email" type="text" name="email" placeholder="Email">
+                <label for="email" class="hidden empty-input">⚠️ &nbsp;Let me know your email, otherwise I won't be able to answer you 😓</label>
+                <label for="email" class="hidden invalid-email">⚠️ &nbsp;Seems that the entered email is not valid 😅</label>
+              </div>
+              <div id="message-form-group" class="form-group text-area">
+                <textarea rows="5" id="message" name="message" placeholder="Write your message..."></textarea>
+                <label for="message" class="hidden empty-input">⚠️  &nbsp;Come on, write something. What's the point of this form then? 🤔</label>
+              </div>
               <input type="submit" value="Send">
             </form>
           </div>
@@ -377,5 +388,6 @@
       </section>
     </div>
   <script src='public/app.js'></script>
+  <script src='public/form-submission.js'></script>
 </body>
 </html>
