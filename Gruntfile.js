@@ -40,6 +40,10 @@ module.exports = function(grunt){
             },
             html: {
                 files: ["index.html"]
+            },
+            images: {
+                files: ['images/*'],
+                tasks: ['responsive_images']
             }
         },
         postcss: {
@@ -83,7 +87,7 @@ module.exports = function(grunt){
         /* Clear out the source directory if it exists */
         clean: {
             dev: {
-                src: ['public/images'],
+                src: ['public'],
             },
         },
 
@@ -109,8 +113,9 @@ module.exports = function(grunt){
     });
 
     grunt.registerTask("sass-task", ["sass"]);
-    grunt.registerTask("responsive_images-task", ["clean", "mkdir", "responsive_images", "copy"]);
-    grunt.registerTask("default", ["responsive_images-task", "watch"]);
+    grunt.registerTask("clean-public", ["clean", "mkdir"]);
+    grunt.registerTask("responsive_images-task", ["responsive_images", "copy"]);
+    grunt.registerTask("default", ["clean-public", "responsive_images-task", "sass-task", "babel-task" ,"watch"]);
     grunt.registerTask("babel-task", ["babel"]);
     grunt.registerTask("postcss-task", ["postcss"]);
     grunt.registerTask("copy-task", ["copy"]);
