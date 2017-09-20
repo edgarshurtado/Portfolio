@@ -115,7 +115,8 @@ module.exports = function(grunt){
     grunt.registerTask("sass-task", ["sass"]);
     grunt.registerTask("clean-public", ["clean", "mkdir"]);
     grunt.registerTask("responsive_images-task", ["responsive_images", "copy"]);
-    grunt.registerTask("default", ["clean-public", "responsive_images-task", "sass-task", "babel-task" ,"watch"]);
+    grunt.registerTask("build", ["clean-public", "responsive_images-task", "sass-task", "babel-task"]);
+    grunt.registerTask("default", ["build","watch"]);
     grunt.registerTask("babel-task", ["babel"]);
     grunt.registerTask("postcss-task", ["postcss"]);
     grunt.registerTask("copy-task", ["copy"]);
