@@ -100,8 +100,9 @@ module.exports = function(grunt){
             main: {
                 files: [{
                     expand: true,
-                    src: ['images/*.svg'],
-                    dest: 'public/images'
+                    cwd: 'images/',
+                    src: ['*.svg'],
+                    dest: 'public/images/'
                 }]
             }
         }
@@ -112,5 +113,6 @@ module.exports = function(grunt){
     grunt.registerTask("default", ["responsive_images-task", "watch"]);
     grunt.registerTask("babel-task", ["babel"]);
     grunt.registerTask("postcss-task", ["postcss"]);
+    grunt.registerTask("copy-task", ["copy"]);
 };
 
