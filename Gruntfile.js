@@ -10,6 +10,9 @@ module.exports = function(grunt){
                 files: {
                     'public/app.js': 'js/app.js',
                     'public/form-submission.js': 'js/form-submission.js'
+                },
+                options: {
+                    minified: true
                 }
             }
         },
