@@ -90,11 +90,67 @@ grunt.loadNpmTasks('grunt-contrib-sass')
 grunt.loadNpmTasks('grunt-contrib-watch')
 ```
 
-You can do: 
+You can simply do: 
 
 ```
 require("load-grunt-tasks")(grunt);
 ```
+
+#### babel
+This module is a post-processor for your JavaScript. The following configuration is which I use for converting my ES6 files to ES5.
+
+For this module to work you need to have installed `babel-preset-es2015` npm package and then configure at your `package.json` this bit:
+
+```
+"babel": {
+    "presets": [
+        "es2015"
+    ]
+}
+```
+Finally, add to your Gruntfile:
+
+```
+"babel": {
+    options: {
+        sourceMap: true  // Generate .map files at destination
+    },
+    dist: {
+        files: {  // 'destination_file': 'source_file'
+            'public/app.js': 'js/app.js',
+            'public/form-submission.js': 'js/form-submission.js'
+        },
+        options: {
+            minified: true  // Minify files
+        }
+    }
+}
+```
+
+Besides converting ES6 code to ES5, this configuration creates `.map` files at the destinations and minifies each file.
+
+Something that seemed weird to me at first was that the destination path is the key for the `files` config object, whereas the source path is the value for that key. Instinctively I'd thought in a `source → destination`but is the contrary. Sure they have their resons, but took me a little to realize of this.
+
+#### Tasks for css
+
+The following Grunt configuration allows to use `scss` files for the project styles instead of plain CSS. You know, all that about being 'sassy' with your CSS from CodeSchool 😜. But there's mor! In addition, this configuration will add all the needed prefixes for your css rules to make your styles work in as many browsers as possible. Personally, I don't know how I've lived without this for so long 🙃.
+
+First, the dependencies:
+* `autoprefixer`
+* `grunt-contrib-sass`
+
+Then a configuration in your `package.json` file:
+
+```
+"browserslist": [
+    " > 5%",
+    "last 2 versions"
+],
+```
+ This will add the prefixes for the las 2 versions of all the browsers that are used by more than the 5% of the internet users. How it knows what those browsers are? Good question. And Actually I didn't know until I wrote this article and asked myself 😅.
+
+ Browserlist is actually a web page [browserl.ist](http://browserl.ist/) that offers an api to query for web browsers names. On this query we can specify some criteria like the one I gave in this post. 
+ * "> 5%" → All browsers with 
 
 ### The Layout
 
