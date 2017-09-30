@@ -138,8 +138,11 @@ The following Grunt configuration allows to use `scss` files for the project sty
 First, the dependencies:
 * `autoprefixer`
 * `grunt-contrib-sass`
+* `grunt-postcss`
 
-Then a configuration in your `package.json` file:
+The workflow for the sytles is: `grunt-contrib-sass` converts scss to css, then  `grunt-postcss` takes that css and using `autoprefixer`, adds the browser vendors.
+
+But there's one more dependency, something you have to add to the `package.json` file:
 
 ```
 "browserslist": [
@@ -147,10 +150,59 @@ Then a configuration in your `package.json` file:
     "last 2 versions"
 ],
 ```
- This will add the prefixes for the las 2 versions of all the browsers that are used by more than the 5% of the internet users. How it knows what those browsers are? Good question. And Actually I didn't know until I wrote this article and asked myself 😅.
 
- Browserlist is actually a web page [browserl.ist](http://browserl.ist/) that offers an api to query for web browsers names. On this query we can specify some criteria like the one I gave in this post. 
- * "> 5%" → All browsers with 
+Browserlist isn't an autoprefixer nor grunt-postcss thing. Browserlist is actually a web page ([browserl.ist](http://browserl.ist/)) that offers an api to query for web browsers names. And then, some modules as autoprefixer uses the result of the query for their configuration, [something that makes our lifes easier](https://css-tricks.com/browserlist-good-idea/). But what does the configuration above do?:
+
+* "> 5%" → Return all browsers' names with a minimum usage of 5%
+* "last 2 versions" → Return the names for the last 2 versions of every browser
+
+ You can go you to the [browserl.ist webpage](http://browserl.ist/) and play with its query search bar and see the results. Actually, I really encourage you to play a bit with it,because some useless criteria could've been added otherwise.
+
+For example, while writting this blogpost I did play with [browserl.ist](http://browserl.ist/) and discovered that there's no use in mixing the above two criteria. This is due to the searcher returning any browser name that matches at least one of the different rules provided. This means that the search looks for `criteria1 OR criteria2` and since all the browsers with a usage greater than 5% are a subset of all the last 2 versions of every browser, I could remove the first criteria getting the same result. This is true for now, though. With the following browser releases, who knows if everyone will instantly update.
+
+> By the way, I found curious that browserlist uses [Can I Use](http://caniuse.com/) data.
+
+Well, once we have browserlist with our wanted specifications, there's just the Gruntfile config left:
+
+```
+"sass": {
+    dist: {
+        files: {
+            'public/styles.css': 'scss/main.scss'
+        },
+        options: {
+            style: 'compressed'
+        }
+    }
+},
+"postcss": {
+    options: {
+        map: true,
+        processors: [
+            require('autoprefixer')({browsers: ["> 5%"]})
+        ]
+    },
+    dist: {
+        src: 'public/*.css'
+    }
+},
+```
+
+I allways tend to reduce the number of request my pages need. That's why I use a `main.scss` file where I import all the app scss files. this way I have all my styles in a single file.
+
+```scss
+@import '_resources.scss';
+@import '_layout.scss';
+@import '_brand_styles.scss';
+@import '_cv_styles.scss';
+@import '_projects_styles.scss';
+@import '_contact_styles.scss';
+```
+> Example from my portfolio page main.scss file
+
+I suppose there are cases where is better to have the css load modularized, but that's an issue to adress in big projects. For every project I've made so far, this approach has been good enough.
+
+You may have noticed that, same as with Babel, we use an option to get the result css compressed.
 
 ### The Layout
 
