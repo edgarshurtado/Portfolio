@@ -188,7 +188,10 @@ Well, once we have browserlist with our wanted specifications, there's just the 
 },
 ```
 
+Notice that, same as with Babel, we use an option to get the result css compressed. The destination → source fashion is kept in `gulp-contrib-sass` as well. However `grunt-postcss` only needs the *src* because it modifies the **css file** itself
+
 I allways tend to reduce the number of request my pages need. That's why I use a `main.scss` file where I import all the app scss files. this way I have all my styles in a single file.
+
 
 ```scss
 @import '_resources.scss';
@@ -200,9 +203,75 @@ I allways tend to reduce the number of request my pages need. That's why I use a
 ```
 > Example from my portfolio page main.scss file
 
+
 I suppose there are cases where is better to have the css load modularized, but that's an issue to adress in big projects. For every project I've made so far, this approach has been good enough.
 
-You may have noticed that, same as with Babel, we use an option to get the result css compressed.
+#### Generating responsive images
+
+It's not a discovey that nowadays, most websites are accesed via mobile devices. Smartphones and tablets are the main window for internet for so many people. That means that, probably, quite a lot of your visitors are using their mobile data plans for accessing your site. And those are often limited in how many GB they can download per month. For this reason is really important that as an act of respect for all of them, we developers try to compress our sites. Optimizing them for being mobile data friendly 😁. And the biggest data impact for a web page are images.
+
+The following configuration will automatically compress your images with 2 different resolutions. The process will let your originals intact, dumping the result files in a diferent folder.
+
+For this process, we need as dependencies:
+* `grunt-responsive-images`
+* `grunt-contrib-copy`
+
+Then, add the following configuration to the `Gruntfile.js`
+
+```
+responsive_images: {
+    jpeg_images: {
+        options: {
+            engine: 'im',
+            sizes: [
+                {
+                    name: '2x',
+                    width: 1600,
+                    quality: 30
+                },
+                {
+                    name: '1x',
+                    width: 800,
+                    quality: 30
+                }
+            ]
+        },
+        files: [{
+            expand: true,
+            src: ['*.{gif,jpg}'],
+            cwd: 'images/',
+            dest: 'public/images/'
+        }]
+    }
+},
+copy: {
+    main: {
+        files: [{
+            expand: true,
+            cwd: 'images/',
+            src: ['*.svg', '*.png'],
+            dest: 'public/images/'
+        }]
+    }
+}
+```
+
+In the `options` section, we use the compression enginge 'im' which stands for `ImageMagick`. This is a software you have to get installed in advance for using this compression process.
+
+Following the engine specification, there's the sizes property. This is an array with all the diferent versions we want for each images. In my case I have 2 sizes with a `width` of 1600 and 800 respectively. The `quality` in both cases will be of 30 (more than enough for any image). And finally, each file will have a **sufix** pointing out its version (which we configure in the `name` property).
+
+At the `files` configuration, again we have an array. This is usefull in case we have several data origins, destinations or such. The `cwd` is the **source directory** for the files. In the `dest` object key, we set the **destination** for the processed images. Finally, at the `src` property, we have an array with all the **source files**. Noticed that we can set patterns to match instead of full files names. In the configuration I'm showing in this post, the target for the **responsive_images_process** are **gif** and **jpg** images.
+
+Finally, with the `copy` process, all the `svg` and `png` files are moved toguether with the ones affected by the `responsive_images` configuration. The svg files are the better optimized for the web, so we don't have nothing to do here. And the `png` ones ... Well, I didn't managed to make **ImageMagick** to compress them 😅. Lucky me, their usually pretty light.
+
+#### The build process.
+
+For getting everything working together propperly, I have a build process that first prepares my assets folder and then launches the processes for my **javascript**, **scss** and **images** files.
+
+This time we have more dependencies:
+*
+*
+*
 
 ### The Layout
 
