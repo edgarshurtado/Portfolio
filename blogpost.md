@@ -74,6 +74,10 @@ Well, I think I've talked enough about meta-work. Let's dive into what really ma
 
 #### Grunt
 
+Grunt is the task manager of my choice for automaizing processes while developing my portfolio. I know there are a lot of different possibilities out there for doing so, but since I started to use it because of an Udacity course about [responsive images ](https://www.udacity.com/course/responsive-images--ud882) and liked it, I keep using it.
+
+Starting using it is not that intuitive, or at least no for what is for 
+
 #### Installing dependencies
 ```
 npm i -D babel-eslint babel-preset-es2015 grunt-babel grunt-cli grunt-contrib-clean grunt-contrib-copy grunt-contrib-sass grunt-contrib-watch grunt-mkdir grunt-postcss grunt-responsive-images load-grunt-tasks
@@ -268,11 +272,86 @@ Finally, with the `copy` process, all the `svg` and `png` files are moved toguet
 
 For getting everything working together propperly, I have a build process that first prepares my assets folder and then launches the processes for my **javascript**, **scss** and **images** files.
 
-This time we have more dependencies:
-*
-*
-*
+This task dependencies are:
+* `grunt-contrib-clean`
+* `grunt-mkdir`
 
-### The Layout
+And the grunt file configuration:
 
-### The sections
+```
+mkdir: {
+    dev: {
+        options: {
+            create: ['public/images']
+        },
+    },
+},
+
+clean: {
+    dev: {
+        src: ['public'],
+    },
+},
+
+
+// Register the tasks
+grunt.registerTask("clean-public", ["clean", "mkdir"]);
+grunt.registerTask("build", ["clean-public", "responsive_images-task", "sass-task", "babel-task"]);
+```
+
+This process has no magic and everything is pretty straightforward. So lets continue to the next task.
+
+#### Watch task. Apply changes automatically and refresh the browser
+
+This is my favourite task. It was, indeed, the whole point for learning Grunt 😁.
+
+This task will stay alert to the files you configure, and when any of thouse change, it will launch the needed tasks to see your changes applied. And you won't even have to refresh the browser your own. Sweet, isn't it?
+
+The dependency `grunt-contrib-watch` is the one which does all the magic.
+
+Once installed, configure at Gruntfile.js:
+
+```
+"watch": {
+    css: {
+        files: [ 'scss/*.scss'],
+        tasks: ['sass','postcss']
+    },
+    js: {
+        files: [ 'js/*.js'],
+        tasks: ['babel']
+    },
+    html: {
+        files: ["index.html"]
+    },
+    images: {
+        files: ['images/*'],
+        tasks: ['responsive_images']
+    },
+    options: { livereload: true },
+}
+
+
+// Set the task
+grunt.registerTask("default", ["build","watch"]);
+```
+
+In every configuration key I have organized all the files I want the process to be aware of and which tasks should be launched every time one of the watched files change.
+
+Finally the line `options: { livereload: true }` is which enables the browser autorefresh. This is the easiest way to do it. Personally, I don'tlike the kind of solution that implies getting a pluggin installed at your browser. However, with `grunt-contrib-watch` just add the following script at your page and you're done.
+
+```
+<script src="http://localhost:35729/livereload.js"></script>
+```
+
+Then, any watched file that is changed will trigger the refreshing of the browser. That's why I have the process listening for `index.html`. Even though it has no task associated, the fact of **watch** being listening for it's changes will refresh the browser when something in the DOM is modified.
+
+You can't imagine how much I've loved this process while programing my portfolio 😍.
+
+
+And that's been all. I leave you here my complete Gruntfile.js and package.json files in case you want to use them.
+
+Happy coding =)
+
+<script src="https://gist.github.com/edgarshurtado/6ed2fae56b300386b81f2c992a2da8ab.js"></script>
+<script src="https://gist.github.com/edgarshurtado/38aa19212a692ce37885d5cd0c056ad8.js"></script>
