@@ -32,10 +32,6 @@ module.exports = function(grunt){
                 files: [ 'scss/*.scss'],
                 tasks: ['sass','postcss']
             },
-            autoprefix: {
-                files: ['css/*.css'],
-                tasks: ['postcss']
-            },
             js: {
                 files: [ 'js/*.js'],
                 tasks: ['babel']
