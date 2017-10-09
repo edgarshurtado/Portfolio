@@ -1,4 +1,4 @@
-![Grunt automatization](http://edgarsh.es/blog/wp-content/uploads/2017/10/automate-workflow-with-grunt-twitter.jpg")
+![Grunt automatization](https://www.smashingmagazine.com/wp-content/uploads/2013/10/grund-js-opt.png)
 
 [As every programmer should](http://threevirtues.com/), I'm lazy. I'm lazy as hell for any action I have to repeat several times. And overall, I'm lazy for doing long tedious tasks that don't imply any mental effort. The bad thing about programming is that there are a lot of this time-consuming-not-enjoyable tasks. Fortunately, we can make our life easier by using some automation scripts. What's the point in being a programmer if not for making computers do our work? That's why I'm so into bash aliases that runs long scripts, configuring my computer to open all my needed programs on startup, and using a task manager to avoid the repetitive tasks while developing a new web page. This last point is the one I cover in this blog post. So, if you want to save time and improve the quality of your projects grab a drink and continue reading.
 
