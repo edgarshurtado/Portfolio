@@ -1,12 +1,14 @@
+![Grunt automatization](http://edgarsh.es/blog/wp-content/uploads/2017/10/automate-workflow-with-grunt-twitter.jpg")
+
 [As every programmer should](http://threevirtues.com/), I'm lazy. I'm lazy as hell for any action I have to repeat several times. And overall, I'm lazy for doing long tedious tasks that don't imply any mental effort. The bad thing about programming is that there are a lot of this time-consuming-not-enjoyable tasks. Fortunately, we can make our life easier by using some automation scripts. What's the point in being a programmer if not for making computers do our work? That's why I'm so into bash aliases that runs long scripts, configuring my computer to open all my needed programs on startup, and using a task manager to avoid the repetitive tasks while developing a new web page. This last point is the one I cover in this blog post. So, if you want to save time and improve the quality of your projects grab a drink and continue reading.
 
 > TL;DR :
 > * Install at your computer [ImageMagick](https://www.imagemagick.org/script/index.php)
 > * Copy and paste at your projects folder this [package.json](https://gist.github.com/edgarshurtado/38aa19212a692ce37885d5cd0c056ad8) and [Gruntfile.json](https://gist.github.com/edgarshurtado/6ed2fae56b300386b81f2c992a2da8ab) files.
 
-[Grunt](https://gruntjs.com/) is the task manager of my choice for automatizing processes while I've been developing my portfolio. I know there are a lot of different possibilities for doing so, but since I started to use it because of an Udacity course about [responsive images ](https://www.udacity.com/course/responsive-images--ud882) and liked it, I kept using it. I assume you know the basics of Grunt in this blog post. If it's not your case, visit the [getting started](https://gruntjs.com/getting-started) secction at the Grunt web page.
+[Grunt](https://gruntjs.com/) is the task manager of my choice for automatizing processes while I've been developing my portfolio. I know there are a lot of different possibilities for doing so, but since I started to use it because of an Udacity course about [responsive images ](https://www.udacity.com/course/responsive-images--ud882) and liked it, I kept using it. I assume you know the basics of Grunt in this blog post. If it's not your case, visit the [getting started](https://gruntjs.com/getting-started) section at the Grunt web page.
 
-Starting to use it is not that intuitive, or at least not for what I consider is the minimum useful configuration. That's the motivation for this blog post. To have all this information I've had to search through the internet in a single place. I hope this is of some use to you 😁 . With the configuration below, you'll have:
+Starting to use it is not that intuitive, though. Or at least not for what I consider is the minimum useful configuration. That's the motivation for this blog post. To have all this information I've had to search through the internet in a single place. I hope this is of some use to you 😁 . With the configuration below, you'll have:
 
 * ES6 to ES5 compilation
 * Scss to CSS compilation
@@ -33,9 +35,9 @@ Other dependencies:
 
 # Easy grunt tasks loading
 
-Grunt, in order to do it's stuff, needs to load tasks, tasks that we previously have installed via npm. This can be tedious as well, though. Tedious and verbose 😖 . But! `load-grunt-tasks` is here to help.
+Grunt, in order to do its stuff, needs to load tasks, tasks that we previously have installed via npm. This can be tedious as well, though. Tedious and verbose 😖 . But! `load-grunt-tasks` is here to help.
 
-This dependency for grunt automatically imports all the other modules you have installed in your project. So for exemple, instead of having to declare:
+This dependency for grunt automatically imports all the other modules you have installed in your project. So for example, instead of having to declare:
 
 ```
 module.exports = function(grunt){
@@ -61,11 +63,11 @@ module.exports = function(grunt){
 
 Great! Isn't it?
 
-# Conver ES6 to ES5 with Babel
+# Convert ES6 to ES5 with Babel
 
-Babel is a post-processor for your JavaScript. The following configuration is which I use for converting my ES6 files to ES5.
+Babel is a post-processor for your JavaScript. The following configuration is which I use for converting my ES6 files to ES5. The importance is that by doing this you are allowed to use all the cool new features of ES6, without having to worry about web browser support. In the end, what the web browser will receive is ES5 which is deeply implanted already.
 
-For this module to work you need to have installed `babel-preset-es2015` npm package and then configure at your `package.json` this bit:
+For this module to work you need to have installed `babel-preset-es2015` through npm and then configure at your `package.json` this bit:
 
 ```
 "babel": {
@@ -90,7 +92,7 @@ module.exports = function(grunt){
         dist: {
             files: {  // 'destination_file': 'source_file'
                 'public/app.js': 'js/app.js',
-                'public/form-submission.js': 'js/form-submission.js'
+                'public/other-example.js': 'js/other-example.js'
             },
             options: {
                 minified: true  // Minify files
@@ -107,7 +109,7 @@ Something that seemed weird to me at first was that the destination path is the 
 
 # Convert Scss to CSS and add vendor prefixes
 
-The following Grunt configuration allows using `scss` files for the project styles instead of plain CSS. You know, all that about being 'sassy' with your CSS from CodeSchool 😜. But there's more! In addition, this configuration will add all the needed prefixes for your css rules to make your styles work in as many browsers as possible. Personally, I don't know how I've lived without this for so long 🙃. .
+The following Grunt configuration allows using `scss` files for the project styles instead of plain CSS. You know, all that about being 'sassy' with your CSS from CodeSchool 😜. But there's more! In addition, this configuration will add all the needed prefixes for your css rules to make your styles work in as many browsers as possible. Personally, I don't know how I've lived without this for so long 🙃 ...
 
 First, the dependencies:
 * `autoprefixer`
@@ -174,9 +176,9 @@ module.exports = function(grunt){
 }
 ```
 
-Notice that, same as with Babel, we use an option to get the resulting CSS compressed. The `destination → source` fashion is kept in `gulp-contrib-sass` as well. However `grunt-postcss` only needs the *src* because it modifies the **css file** itself
+Notice that, same as with Babel, we use an option to get the resulting CSS compressed. The `destination → source` fashion is kept in `gulp-contrib-sass` as well. However, `grunt-postcss` only needs the *src* because it modifies the **css file** itself
 
-There's just one more thing regarding CSS files. I always tend to reduce the number of requests my pages need. That's why I use a `main.scss` file where I import all the app scss files. this way I have all my styles in a single file.
+There's just one more thing regarding CSS files, but it's just a recommendation. I always tend to reduce the number of requests my pages need. That's why I use a `main.scss` file where I import all the app scss files. this way I have all my styles in a single file.
 
 
 ```scss
@@ -256,13 +258,13 @@ module.exports = function(grunt){
 
 ```
 
-In the `options` section, we use the compression engine 'im' which stands for `ImageMagick`. This is a software you have to get installed in advance for using this compression process.
+In the `options` section, we use the compression engine 'im' which stands for `ImageMagick`. This is a software you have to get installed in advance for using this compression process (See the very beginning of this post).
 
 Following the engine specification, there's the sizes property. This is an array of all the different versions we want for each image. In my case, I have 2 sizes with a `width` of 1600 and 800 respectively. The `quality` in both cases will be of 30 (more than enough for any image). And finally, each file will have a **suffix** pointing out its version (which we configure in the `name` property).
 
-At the `files` configuration, again we have an array. This is useful in case we have several data origins, destinations or such. The `cwd` is the **source directory** for the files. In the `dest` object key, we set the **destination** for the processed images. Finally, at the `src` property, we have an array with all the **source files**. Noticed that we can set patterns to match instead of full files names. In the configuration I'm showing in this post, the target for the **responsive_images_process** are **gif** and **jpg** images.
+At the `files` configuration, again we have an array. This is useful in case we have several data origins, destinations or such. The `cwd` is the **source directory** for the files. Whereas in the `dest` object key, we set the **destination** for the processed images. Finally, at the `src` property, we have an array with all the **source files**. Noticed that we can set patterns to match instead of full files names. In the configuration I'm showing in this post, the target for the **responsive_images_process** are **gif** and **jpg** images.
 
-Finally, with the `copy` process, all the `svg` and `png` files are moved together with the ones affected by the `responsive_images` configuration. The SVG files are the better optimized for the web, so we have nothing to do here. And the `png` ones ... Well, I didn't manage to make **ImageMagick** to compress them 😅 . Lucky me, their usually pretty light.
+Finally, with the `copy` process, all the `svg` and `png` files are moved together with the ones affected by the `responsive_images` configuration. The SVG files are the better optimized for the web, so we have nothing to do here. And the `png` ones ... Well, I didn't manage to make **ImageMagick** to compress them 😅 . Lucky me, they're usually pretty light.
 
 # The build process.
 
@@ -280,7 +282,8 @@ module.exports = function(grunt){
 
     grunt.initConfig({
         /... babel, css and responsive images configuration
-        mkdir: {
+
+        mkdir: { // Creates folder in case doesn't exists
             dev: {
                 options: {
                     create: ['public/images']
@@ -295,20 +298,20 @@ module.exports = function(grunt){
         }
     }
 
-    /... babel, css and responsive images tasks
+    /... babel, css, and responsive images tasks
 
-    grunt.registerTask("clean-public", ["clean", "mkdir"]);
+    grunt.registerTask("clean-public", [ "mkdir" ,"clean"]);
     grunt.registerTask("build", ["clean-public", "responsive_images-task", "sass-task", "babel-task"]);
 }
 ```
 
-See how i register a task named as `build` to lanch, with a single comand, several tasks.
+First I set the `clean-public` task that I need. ThenI registered a task named as `build` to launch, with a single command, all the assets related tasks.
 
 # Watch task. Apply changes automatically and refresh the browser
 
-As I said at the blog post introduction, this is my favorite task by far. It was, indeed, the whole point for learning Grunt 😁 .
+As I said at the blog post introduction, this is my favorite task by far. It was, indeed, the whole point for learning a task manager 😁 .
 
-This task will stay alert to the files you configure, and when any of thouse change, it will launch the needed tasks to see your changes applied. And you won't even have to refresh the browser your own. Sweet, isn't it?
+This task will stay alert to the files you configure, and when any of those change, it will launch the needed tasks to see your changes applied. And you won't even have to refresh the browser your own. Sweet, isn't it?
 
 The dependency `grunt-contrib-watch` is the one which does all the magic.
 
@@ -360,7 +363,7 @@ Then, any watched file that is changed will trigger the refreshing of the browse
 
 You can't imagine how much I've loved this process while programming my portfolio 😍.
 
-By the way. I think is worth to mention that I register this task toguether with the build task with the name of `default`. With this, what I accomplish is to get all my tasks running by simply typing at my console `grunt`. Lazyness is the way 😜 .
+By the way. I think is worth to mention that I register this task together with the `build` task naming it as `default`. With this, what I accomplish is to get this process running by simply typing at my console `grunt`. Laziness is the way 😜 .
 
 
 And that's been all. I leave you here my complete Gruntfile.js and package.json files in case you want to use them.
@@ -369,3 +372,5 @@ Happy coding =)
 
 <script src="https://gist.github.com/edgarshurtado/6ed2fae56b300386b81f2c992a2da8ab.js"></script>
 <script src="https://gist.github.com/edgarshurtado/38aa19212a692ce37885d5cd0c056ad8.js"></script>
+
+P.S: I want this post to be helpful, so any suggestion for improving the explanations or examples will be appreciated.
